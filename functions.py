@@ -169,3 +169,4 @@ def mul(a, b):
 print("Arithemetic mul:", arithematic(mul, 20, 30))
 
 
+#hello
