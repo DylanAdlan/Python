@@ -1,8 +1,8 @@
-#when we called python to execute our program
+# when we called python to execute our program
 # our program in the command line is also called command line arguments
-#these arguments separated by space
+# these arguments separated by space
 # all these arguments inside the list are string type
-#Remeber the arguments for function is separated by comma
+#Remember the arguments for function is separated by comma
 
 
 # sys.argv give us a list which contains command line argument
@@ -21,8 +21,8 @@ print(length)
 # total = int(cmdarguments[1]) + int(cmdarguments[2])
 
 # In this case we have to use loops (since we do not know the sum of all of arguments)
-total =0
-for number in cmdarguments[1:]:
-    total = total + int(number)
-print(total)
+# total =0
+# for number in cmdarguments[1:]:
+#     total = total + int(number)
+# print(total)
 

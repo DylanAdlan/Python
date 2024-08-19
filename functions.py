@@ -99,7 +99,7 @@ print(findTotal([10, 20, 30]))
 print(findTotal([10, 20, 30, 40, 50, 60]))
 print(findTotal([10, 20, 30, 40, 50, 60, 70, 80, 90]))
 
-# kalau caller lupa nk ltak arguments in a list
+# kalau caller lupa nk ltak arguments in a listij
 # then kita just letak star (*) dkat parameter so
 # dia akan take the values as in a list
 # melibatkan integer
@@ -169,4 +169,3 @@ def mul(a, b):
 print("Arithemetic mul:", arithematic(mul, 20, 30))
 
 
-#hello

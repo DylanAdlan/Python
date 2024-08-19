@@ -1,24 +1,29 @@
-# HOW TO REPRESENT BINARY NUMBER IN PYTHON
+print("How to represent binary number in python")
+
 # CAN USE 0b and follwed by binary number
-# however it is still an integer
-# by adding ob, python read it as one one one 
+# however when print out,it's in their decimal number
+# by adding 0b, python read it as one one one 
 # instead of one hundred and eleven
-ownerpermission = 0b111 #ob represent whatever number come after him is binary number
-print(ownerpermission)
+ownerpermission = 0b111 #ob represent whatever number come after him as "BINARY" number
+print(ownerpermission) # print execute it's decimal number
+
+#-------------------------------------------------------------------------------------------------------
 
 filepermission = 0b111101001 
 # now owner can read, write and execute
 # group can read and execute
 # others can execute only
 
-# in data science/machine learning where you were given 
-# categorical data ypu must convert them into numbers
-# which machine can understand
-# this itself called "feature engineering"
-# example for gender representation 01 for female and 10 for male
-# example reace representation 1000 for malay amd 0100 for chinese
+#---------------------------------------------------------------------------------------------------------
 
-# this bit extraction can be use using bitwise and opertaor
+# in data science/machine learning where you were given 
+# categorical data you must convert them into binary numbers
+# which machine can understand which only (0,1)
+# this itself called "feature engineering"
+# example for gender representation (01 | female), (10 | male)
+# example race representation (1000 | malay) (0100 | chinese)
+
+# this bit extraction can be use using bitwise and operator
 mask = 0b000111000
 print((filepermission & mask) >> 3)
 # shift = used for extract the certain bits

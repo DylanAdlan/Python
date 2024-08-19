@@ -111,3 +111,8 @@ print(foreigner)
 # remove key "car"
 foreigner.pop("car")
 print(foreigner)
+
+t = (1,2,3)
+s = set(t)
+print(s)
+

@@ -1,4 +1,4 @@
-"""
+
 # q1
 
 count = 100
@@ -341,96 +341,117 @@ else:
 
 # q9 
 
-print("Convert roman numeral to integer")
-
-def roman_to_integer(s):
+# roman to number
+def romanToInteger(s):
+    # Dictionary to map Roman numeral characters to their integer values
     roman_dict = {
-        'I': 1, 'V': 5, 'X': 10, 'L': 50,
-        'C': 100, 'D': 500, 'M': 1000
+        'I': 1,    'V': 5,    'X': 10,   'L': 50,
+        'C': 100,  'D': 500,  'M': 1000
     }
-    total = 0
-    prev_value = 0
-    
+
+    # Initialize variables
+    total = 0        # To store the total integer value
+    prev_value = 0   # To store the value of the previous Roman numeral character
+
+    # Iterate through each character in the Roman numeral string
     for char in s:
-        current_value = roman_dict[char]
+        current_value = roman_dict[char]  # Get integer value of the current character
+
+        # If current value is greater than previous value, it means a subtractive combination
         if current_value > prev_value:
-            total += current_value - 2 * prev_value
+            total += current_value - 2 * prev_value  # Adjust total accordingly
         else:
             total += current_value
+
+        # Update prev_value for next iteration
         prev_value = current_value
-    
+
     return total
 
-# Example usage:
-roman_numeral = "IX"
-print(f"The integer value of {roman_numeral} is: {roman_to_integer(roman_numeral)}")
+def integerToRoman(number):
+    # define numbers and their corresponding symbols
+    numbers = [1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1]
+    symbols = ["M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I"]
 
 
-def roman_to_integer(s):
-    # Define a dictionary to map Roman numeral characters to their integer values
-    roman_dict = {
-        'I': 1,   # 1
-        'V': 5,   # 5
-        'X': 10,  # 10
-        'L': 50,  # 50
-        'C': 100, # 100
-        'D': 500, # 500
-        'M': 1000 # 1000
-    }
-    
-    # Initialize the total sum of the Roman numeral
-    total = 0
-    # Variable to keep track of the previous numeral's value
-    prev_value = 0
-    
-    # Iterate through each character in the input string 's'
-    for char in s:
-        # Get the integer value corresponding to the current Roman numeral character
-        current_value = roman_dict[char]
-        
-        # Compare the current value with the previous value
-        if current_value > prev_value:
-            # If the current numeral's value is greater than the previous one,
-            # it means subtraction is needed (e.g., IV -> 5 - 1 = 4)
-            total += current_value - 2 * prev_value
+    # assigned to empty to store roman numeral
+    roman_numeral = "" 
+
+    # currentavlue will hold the number
+    currentNumber = number
+    # the current position assigned with 0 bcs we want to 
+    # to start with first index of numbers and symbols
+    position = 0
+
+    # currentnumber = 12
+    while currentNumber > 0: # 12 > 0
+        if currentNumber - numbers[position] >=0: # if 12 - 1000 >=0
+            roman_numeral += symbols[position]
+            currentNumber -= numbers[position]
         else:
-            # Otherwise, just add the current numeral's value to the total
-            total += current_value
-        
-        # Update the previous value to the current value for the next iteration
-        prev_value = current_value
-    
-    # Return the total sum, which is the integer representation of the Roman numeral
-    return total
+            position +=1
+
+    return roman_numeral
+
+option = int(input("Choose your options: \n 1. Convert roman numerals to numbers \n 2. Convert numbers to roman numerals:\n"))
+if option == 1:
+  roman = input("Input your roman numerals:")
+  print(romanToInteger(roman))
+elif option == 2:
+  number = int(input("Enter your number:"))
+  print(integerToRoman(number))
+else:
+  print("Invalid option!")
+
+
+
+# # Example usage:
+# print(integer_to_roman(3))        # Output: "III"
+# print(integer_to_roman(4))        # Output: "IV"
+# print(integer_to_roman(9))        # Output: "IX"
+# print(integer_to_roman(58))       # Output: "LVIII"
+# print(integer_to_roman(1994))     # Output: "MCMXCIV"
+# # Example usage:
+# print(roman_to_integer("III"))      # Output: 3
+# print(roman_to_integer("IV"))       # Output: 4
+# print(roman_to_integer("IX"))       # Output: 9
+# print(roman_to_integer("LVIII"))    # Output: 58
+# print(roman_to_integer("MCMXCIV"))  # Output: 1994
+
+
+# q10 string compression
+
+def compress_string(s):
+    compressed_string = []  # List to store compressed characters and counts
+    count_consecutive = 0    # Counter for consecutive occurrences of a character
+
+    # Traverse through the input string `s`
+    for i in range(len(s)): # aabcccccaaa (0,11)
+        count_consecutive += 1  # Increment the count for consecutive occurrences
+        # 1
+
+        # kalau next character still same, dia xlepas if condition and will keep count_counsecutive +1
+        # Check if the next character is different or if we've reached the end of the string
+        if (i + 1 >= len(s)) or (s[i] != s[i + 1]):
+          # 0 + 1 >= 11 x         a != a x
+
+            compressed_string.append(s[i]) # Append current character
+            # kalau next character diferrent, then append the character
+            compressed_string.append(str(count_consecutive))  # Append its count as a string
+            count_consecutive = 0  # Reset the count of consecutive occurrences
+
+    # Join the list into a string (It concatenates each element of compressed_string into a single string,
+    # using the empty string '' as the separator between elements.)
+    compressed_string = ''.join(compressed_string)
+
+    # Return the compressed string only if it's shorter than the original string `s`
+    return compressed_string if len(compressed_string) < len(s) else s
+    # to make sure length compressed string shorter than length of original string
+    # then it will return the compressed string
+    # if False, original string will return
 
 # Example usage:
-roman_numeral = "IX"
-print(f"The integer value of {roman_numeral} is: {roman_to_integer(roman_numeral)}")
-
-"""
-def roman_to_integer(roman):
-    # Define a dictionary to map Roman numeral characters to their integer values
-    numerals = {
-        'I': 1,   # 1
-        'V': 5,   # 5
-        'X': 10,  # 10
-        'L': 50,  # 50
-        'C': 100, # 100
-        'D': 500, # 500
-        'M': 1000 # 1000
-    }
-
-    integer = 0
-
-    for i in range(len(roman)):
-        value = numerals[roman[i]]
-        if i + 1 < len(roman) and numerals[roman[i + 1]] > value:
-            integer -= value
-        else:
-            integer +=value
-
-    return integer
-    
-
-roman = "XII"
-print(roman_to_integer(roman))
+#input_string = "aabcccccaaa"
+input_string = input("Enter string of character eg:aabbccc: ")
+print(f"Original string: {input_string}")
+print(f"Compressed string: {compress_string(input_string)}")

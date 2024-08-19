@@ -2,42 +2,12 @@
 # I want you to reverse the number
 # expected result 13579
 
+print("To reverse the number")
 
-a0 = 97531
-result = a0 % 10 # arithmatic operator utk dapatkan remainder bila division
-print(result)
-a1 = a0 // 10 # arithmatic operator // utk dapatkan quotient bila division
-print(result, a1)
+number = input(f"Enter number:\n") # no need to be in integer type
 
-result = (result * 10) + (a1 % 10)
-a2 = a1 // 10
-print(result, a2)
-
-result = (result * 10) + (a2 % 10)
-a3 = a2 // 10
-print(result, a3)
-
-result = (result * 10) + (a3 % 10)
-a4 = a3 // 10
-print(result, a4)
-
-result = (result * 10) + (a4 % 10)
-a5 = a4 // 10
-print(result, a5)
-
-print("The reverse number:", result)
-
-givenNumber = 97531
-result = givenNumber % 10 #1
-# givenNumber = givenNumber // 10 #9753
-givenNumber //= 10 # 9753
-result = (result * 10) + (givenNumber % 10) #13
-givenNumber //= 10 #975
-result = (result * 10) + (givenNumber % 10) #135
-givenNumber //= 10 #97
-result = (result * 10) + (givenNumber % 10) #1357
-givenNumber //= 10 #9
-result = (result * 10) + (givenNumber % 10) #1359
+for i in number[::-1]:
+    print(i, end="")
 
 
 # Akmal solution
@@ -49,6 +19,32 @@ result = result + ((a0 //100) % 10) * 100
 result = result + ((a0 //1000) % 10) * 10
 result = result + ((a0 //10000) % 10) * 1
 
-totaldays = 5
-currentday = 0
-print
+
+
+
+############################################################################
+# str_numbers = input("Input anything separated by comma: ")
+# str_numbers = str_numbers.split(",")
+# print(str_numbers)
+
+
+# # 1st method
+# numbers = [int(str_number) for str_number in str_numbers]
+# print(numbers)
+
+# # 2nd method
+# numbers = map(int, str_numbers)
+# # print(list(numbers))
+
+# print(set(list(numbers)))
+
+########################################################################################
+
+nestedlist = [
+    [1,2,3],
+    [3,4,5],
+    [1,2,3]
+]
+nestedlist = [ tuple(item) for item in nestedlist]
+print(set(nestedlist))
+

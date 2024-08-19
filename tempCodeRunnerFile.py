@@ -1,0 +1,1 @@
+input(f"Enter number:\n")
